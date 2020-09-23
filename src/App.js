@@ -14,7 +14,7 @@ function App() {
             setTimer(newPhase.seconds);
             setCurrentPhase(newPhase);
         }
-    }, isRunning ? 0.1 : null);
+    }, isRunning ? 1000 : null);
 
     const startCounting = () => {
         setTimer(currentPhase.seconds);
@@ -30,12 +30,18 @@ function App() {
         setRunning(!isRunning);
     };
 
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+    }
+
     return (
         <div>
             <div>
                 {currentPhase.name}
                 <br/>
-                {timer}
+                {formatTime(timer)}
             </div>
             <button onClick={isRunning ? pause : startCounting}>START</button>
             <button onClick={resetCounting}>RESET</button>
