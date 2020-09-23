@@ -14,20 +14,15 @@ function App() {
             setTimer(newPhase.seconds);
             setCurrentPhase(newPhase);
         }
-    }, isRunning ? 1000 : null);
+    }, isRunning ? 1 : null);
 
-    const startCounting = () => {
-        setTimer(currentPhase.seconds);
+    const setRunningFlag = () => {
         setRunning(!isRunning);
     };
 
     const resetCounting = () => {
         setTimer(currentPhase.seconds);
         setRunning(false);
-    };
-
-    const pause = () => {
-        setRunning(!isRunning);
     };
 
     const formatTime = (time) => {
@@ -43,7 +38,7 @@ function App() {
                 <br/>
                 {formatTime(timer)}
             </div>
-            <button onClick={isRunning ? pause : startCounting}>START</button>
+            <button onClick={setRunningFlag}>{isRunning ? 'PAUSE' : 'START'}</button>
             <button onClick={resetCounting}>RESET</button>
         </div>
     );
