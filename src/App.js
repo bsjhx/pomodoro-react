@@ -31,6 +31,8 @@ function App() {
         return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
     }
 
+    document.title = formatTime(timer) + ' - ' + currentPhase.name;
+
     return (
         <div className={'App'}>
             <div className={'time-section'}>
